@@ -18,4 +18,7 @@ public class CardService {
     public Optional<LargeCard> singleCard(ObjectId id){
         return  cardRepo.findById(id);
     }
+    public Optional<LargeCard> cardName(String name){
+        return  cardRepo.findLargeCardByName(name);
+    }
 }
