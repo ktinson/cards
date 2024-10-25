@@ -11,10 +11,6 @@
 	<groupId>com.jbsr</groupId>
 	<artifactId>cards</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
-	<modules>
-		<module>demo</module>
-	</modules>
 	<name>cards</name>
 	<description>A simple application to hold user input</description>
 	<url/>
