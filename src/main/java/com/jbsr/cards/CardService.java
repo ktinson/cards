@@ -21,4 +21,25 @@ public class CardService {
     public Optional<LargeCard> cardName(String name){
         return  cardRepo.findLargeCardByName(name);
     }
+    public LargeCard saveCard(LargeCard largeCard){
+        return cardRepo.save(largeCard);
+    }
+    public LargeCard updateCard(String id, LargeCard updatedCard){
+        ObjectId objectId = new ObjectId(id);
+        Optional<LargeCard> cardExist = cardRepo.findById(objectId);
+        if (cardExist.isPresent()){
+            updatedCard.setId(objectId);
+            return cardRepo.save(updatedCard);
+        }
+        return null;
+    }
+    public boolean deleteCardById(String id){
+        ObjectId objectId = new ObjectId(id);
+        Optional<LargeCard> cardExist = cardRepo.findById(objectId);
+        if (cardExist.isPresent()){
+            cardRepo.deleteById(objectId);
+            return true;
+        }
+        return false;
+    }
 }
