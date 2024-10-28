@@ -9,6 +9,4 @@ import java.util.Optional;
 @Repository
 public interface CardRepo extends MongoRepository<LargeCard, ObjectId> {
     Optional<LargeCard> findLargeCardByName(String name);
-//    Optional<LargeCard> findById(ObjectId id);
-
 }
