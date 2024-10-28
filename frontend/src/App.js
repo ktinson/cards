@@ -100,18 +100,15 @@ class App extends Component {
 
   renderItems = () => {
     const { viewLarge } = this.state;
-    // console.log(this.state.cardList)
     const newItems = this.state.cardList.filter(
       (item) => item.large === viewLarge
     )
     const testItems = this.state.cardList
-    console.log(this.state.cardList)
     console.log(newItems)
     console.log(testItems);
 
 
-    return( <Grid container spacing={3}> {testItems.map((item) => {
-      console.log(item, "hello")
+    return( <Grid container spacing={3}> {newItems.map((item) => {
       return(
        
         <> 

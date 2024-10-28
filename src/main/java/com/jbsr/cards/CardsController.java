@@ -35,7 +35,7 @@ public class CardsController {
         LargeCard savedCard = cardService.saveCard(largeCard);
         return new ResponseEntity<>(savedCard, HttpStatus.CREATED);
     }
-    @CrossOrigin(origins = "http://localhost:3000")
+    
     @PutMapping("/id/{id}")
     public  ResponseEntity<LargeCard> updateCardByName(@PathVariable String id, @RequestBody LargeCard largeCard){
         LargeCard updatedCard = cardService.updateCard(id, largeCard);
