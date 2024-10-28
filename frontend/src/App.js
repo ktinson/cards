@@ -108,7 +108,7 @@ class App extends Component {
     console.log(testItems);
 
 
-    return( <Grid container spacing={3}> {newItems.map((item) => {
+    return( <Grid container spacing={3} style={{display: "flex", flexDirection: "row", justifyItems: "center", alignItems: "center"}}>{newItems.map((item) => {
       return(
        
         <> 
@@ -143,7 +143,7 @@ class App extends Component {
       </Grid>
     :
     <Grid size={8} style={{padding: "25px"}}>
-        <Card sx={{ width: 290 }}>
+        <Card sx={{ width: 850 }}>
       <CardMedia
         sx={{ height: 345 }}
         image={item.image}
@@ -190,9 +190,9 @@ class App extends Component {
                 </Button>
               </div>
               {this.renderTabList()}
-              <div style={{padding: "50px"}}>
+              <div style={{padding: "50px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
                 <p>{ `${apiURL}`}</p>
-                {this.renderItems()}
+                <div>{this.renderItems()}</div>
                 </div>
             
         </div>
