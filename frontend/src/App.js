@@ -24,19 +24,12 @@ class App extends Component {
     this.refreshList();
   }
   
-  refreshList = () => {
-    
-    axios
-      // .get(`${apiURL}/api/v1/cards`)
-      .get(`${apiURL}/api/v1/cards`,{ crossdomain: true },  {headers: {'content-type': 'application/x-www-form-urlencoded'}})
-      // .get(`http://localhost:8080/api/v1/cards`)
+  refreshList = async () => {
+   await axios
+      .get(`http://localhost:8080/api/v1/cards`)
       .then((res) => this.setState({ cardList: res.data }))
       .catch((err) => console.log(err));
-    console.log(`${apiURL}/api/v1/cards`, `api url`)
-    console.log(process.env.REACT_APP_API_URL, "REACT_APP_API_URL")
-    console.log(process.env.PORT, `process env PORT`)
-    console.log(process.env.NODE_ENV, "NODE_ENV")
-   
+    // console.log(`${apiURL}/api/v1/cards`, `api url`)
   };
 
   toggle = () => {
@@ -107,13 +100,22 @@ class App extends Component {
 
   renderItems = () => {
     const { viewLarge } = this.state;
+    // console.log(this.state.cardList)
     const newItems = this.state.cardList.filter(
       (item) => item.large === viewLarge
-    );
+    )
+    const testItems = this.state.cardList
+    console.log(this.state.cardList)
+    console.log(newItems)
+    console.log(testItems);
 
-    return( <Grid container spacing={3}> {newItems.map((item) => {
+
+    return( <Grid container spacing={3}> {testItems.map((item) => {
+      console.log(item, "hello")
       return(
-        <>{!viewLarge ?
+       
+        <> 
+        {!viewLarge ?
           <Grid size={8} style={{padding: "25px"}}>
           <Card sx={{ width: 200 }}>
         <CardMedia
