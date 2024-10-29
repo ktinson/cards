@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Modal from "./components/Modal.js";
-import {Button, CardActions, Typography, CardContent, CardMedia, Card, Grid} from '@mui/material/';
+import Carousel from "react-material-ui-carousel";
+import {Button, CardActions, Typography, CardContent, CardMedia, Card, Grid, Paper, ImageList, ImageListItem} from '@mui/material/';
 import apiURL from "./api.js";
 import axios from "axios";
 
@@ -29,7 +30,6 @@ class App extends Component {
       .get(`http://localhost:8080/api/v1/cards`)
       .then((res) => this.setState({ cardList: res.data }))
       .catch((err) => console.log(err));
-    // console.log(`${apiURL}/api/v1/cards`, `api url`)
   };
 
   toggle = () => {
@@ -38,32 +38,28 @@ class App extends Component {
 
   handleSubmit = (item) => {
     this.toggle();
-
     if (item.id) {
       axios
         .put(`${apiURL}/api/v1/cards/id/${item.id}`, item)
         .then((res) => this.refreshList());
         console.log(`${apiURL}/api/v1/cards/id/${item.id}`, item)
-
       return;
     }
     axios
       .post(`${apiURL}/api/v1/cards`, item)
       .then((res) => this.refreshList());
       console.log(`${apiURL}/api/v1/cards/id/${item.id}`, item)
-
   };
 
   handleDelete = (item) => {
     axios
-      .delete(`${apiURL}/api/v1/cards/${item.id}`)
+      .delete(`${apiURL}/api/v1/cards/id/${item.id}`)
       .then((res) => this.refreshList());
         console.log(`${apiURL}/api/v1/cards/id/${item.id}`, item)
   };
 
   createItem = () => {
     const item = { name: "", description: "", large: false };
-
     this.setState({ activeItem: item, modal: !this.state.modal });
   };
 
@@ -75,8 +71,7 @@ class App extends Component {
     if (status) {
       return this.setState({ viewLarge: true });
     }
-
-    return this.setState({ viewLarge: false });
+      return this.setState({ viewLarge: false });
   };
 
   renderTabList = () => {
@@ -97,18 +92,36 @@ class App extends Component {
       </div>
     );
   };
-
+  renderImageList = () => {
+    const newList = this.state.cardList
+    return(<> 
+        {<ImageList variant="masonry" cols={3} gap={8}>
+  {newList.map((item) => (
+    <ImageListItem key={item.img}>
+      <img
+        srcSet={`${item.image}`}
+        src={`${item.image}`}
+        alt={item.name}
+        loading="lazy"
+      />
+    </ImageListItem>
+  ))}
+</ImageList>}
+    
+    </>
+    )
+  }
   renderItems = () => {
     const { viewLarge } = this.state;
     const newItems = this.state.cardList.filter(
       (item) => item.large === viewLarge
     )
-    const testItems = this.state.cardList
-    console.log(newItems)
-    console.log(testItems);
+    const carItems = this.state.cardList
+    console.log(newItems);
+    return(<>
 
 
-    return( <Grid container spacing={3} style={{display: "flex", flexDirection: "row", justifyItems: "center", alignItems: "center"}}>{newItems.map((item) => {
+  <Grid container spacing={3} style={{display: "flex", flexDirection: "row", justifyItems: "center", alignItems: "center"}}>{newItems.map((item) => {
       return(
        
         <> 
@@ -142,6 +155,7 @@ class App extends Component {
       </Card>
       </Grid>
     :
+    <>
     <Grid size={8} style={{padding: "25px"}}>
         <Card sx={{ width: 850 }}>
       <CardMedia
@@ -173,10 +187,12 @@ class App extends Component {
       </CardActions>
     </Card>
     </Grid>
+  
+    </>
     
     }
       </>)
-  })}</Grid>);
+  })}</Grid></>);
   };
 
   render() {
@@ -193,6 +209,7 @@ class App extends Component {
               <div style={{padding: "50px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
                 <p>{ `${apiURL}`}</p>
                 <div>{this.renderItems()}</div>
+                  {this.renderImageList()}
                 </div>
             
         </div>

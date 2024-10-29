@@ -26,6 +26,10 @@ public class CardsController {
     public ResponseEntity<Optional<LargeCard>> getSingleCard(@PathVariable ObjectId id){
         return new ResponseEntity<Optional<LargeCard>>(cardService.singleCard(id), HttpStatus.OK);
     }
+    @GetMapping("/id/")
+    public ResponseEntity<List<LargeCard>> getAllCardIds(){
+        return new ResponseEntity<List<LargeCard>>(cardService.getAllCards(), HttpStatus.OK);
+    }
     @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
     public ResponseEntity<Optional<LargeCard>> getSingleCardName(@PathVariable String name){
         return new ResponseEntity<Optional<LargeCard>>(cardService.cardName(name), HttpStatus.OK);
