@@ -95,32 +95,16 @@ class App extends Component {
   renderImageList = () => {
     const newList = this.state.cardList
     return(<> 
-        {<ImageList variant="masonry" cols={3} gap={8}>
+        {<ImageList sx={{ width: 700, height: 250 }} variant="masonry" cols={3} gap={8}>
   {newList.map((item) => (
-    <ImageListItem key={item.image}>
+    <ImageListItem key={item.image} onClick={() => this.editItem(item)}>
       <img
+        
         srcSet={`${item.image}`}
         src={`${item.image}`}
         alt={item.name}
         loading="lazy"
-      />
-      <div><ImageListItemBar
-            title={item.name}
-            subtitle={<span>Description: {item.description}</span>}
-            position="below"
-          /> <Button
-            className="btn btn-secondary mr-2"
-            onClick={() => this.editItem(item)}
-          >
-            Edit
-          </Button>
-          <Button
-            className="btn btn-danger"
-            onClick={() => this.handleDelete(item)}
-          >
-            Delete
-          </Button></div>
-       
+      />   
     </ImageListItem>
   ))}
 </ImageList>}
@@ -168,7 +152,7 @@ class App extends Component {
     </ImageList>)
       :
     (<>
-    <Grid container spacing={3} style={{display: "flex", flexDirection: "column", justifyItems: "center", alignItems: "center"}}>
+    <Grid container spacing={3} style={{display: "flex", flexDirection: "column", justifyItems: "center", alignItems: "center", rowGap: "10px"}}>
       {
         newItems.map((item) => {
           return(
@@ -224,9 +208,9 @@ class App extends Component {
                 </Button>
               </div>
               {this.renderTabList()}
-              <div style={{padding: "50px", display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
+              <div style={{padding: "50px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "50px"}}>
                 <div>{this.renderItems()}</div>
-                  {/* <div>{this.renderImageList()}</div> */}
+                  <div>{this.renderImageList()}</div>
                 </div>
             
         </div>
