@@ -168,7 +168,7 @@ class App extends Component {
     </ImageList>)
       :
     (<>
-    <Grid container spacing={3} style={{display: "flex", flexDirection: "row", justifyItems: "center", alignItems: "center"}}>
+    <Grid container spacing={3} style={{display: "flex", flexDirection: "column", justifyItems: "center", alignItems: "center"}}>
       {
         newItems.map((item) => {
           return(
