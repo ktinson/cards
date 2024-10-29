@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Modal from "./components/Modal.js";
 import Carousel from "react-material-ui-carousel";
-import {Button, CardActions, Typography, CardContent, CardMedia, Card, Grid, Paper, ImageList, ImageListItem} from '@mui/material/';
+import {Button, CardActions, Typography, CardContent, CardMedia, Card, Grid, Paper, ImageList, ImageListItem, ImageListItemBar} from '@mui/material/';
 import apiURL from "./api.js";
 import axios from "axios";
 
@@ -97,13 +97,30 @@ class App extends Component {
     return(<> 
         {<ImageList variant="masonry" cols={3} gap={8}>
   {newList.map((item) => (
-    <ImageListItem key={item.img}>
+    <ImageListItem key={item.image}>
       <img
         srcSet={`${item.image}`}
         src={`${item.image}`}
         alt={item.name}
         loading="lazy"
       />
+      <div><ImageListItemBar
+            title={item.name}
+            subtitle={<span>Description: {item.description}</span>}
+            position="below"
+          /> <Button
+            className="btn btn-secondary mr-2"
+            onClick={() => this.editItem(item)}
+          >
+            Edit
+          </Button>
+          <Button
+            className="btn btn-danger"
+            onClick={() => this.handleDelete(item)}
+          >
+            Delete
+          </Button></div>
+       
     </ImageListItem>
   ))}
 </ImageList>}
@@ -119,45 +136,43 @@ class App extends Component {
     const carItems = this.state.cardList
     console.log(newItems);
     return(<>
-
-
-  <Grid container spacing={3} style={{display: "flex", flexDirection: "row", justifyItems: "center", alignItems: "center"}}>{newItems.map((item) => {
-      return(
-       
-        <> 
-        {!viewLarge ?
-          <Grid size={8} style={{padding: "25px"}}>
-          <Card sx={{ width: 200 }}>
-        <CardMedia
-          image={item.image}
-          style={{width: 200, height: 200}}
-          title="card image"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="body" component="div">
-            <p><b>{item.name}</b></p>
-          </Typography>
-        </CardContent>
-        <CardActions>
-        <Button
-              className="btn btn-secondary mr-2" size="small"
-              onClick={() => this.editItem(item)}
-            >
-              Edit
-            </Button>
-            <Button
-              className="btn btn-danger"
-              onClick={() => this.handleDelete(item)}
-            >
-              Delete
-            </Button>
-        </CardActions>
-      </Card>
-      </Grid>
-    :
-    <>
-    <Grid size={8} style={{padding: "25px"}}>
-        <Card sx={{ width: 850 }}>
+    {!viewLarge ?
+    (<ImageList variant="masonry" cols={3} gap={8}>
+      {newItems.map((item) => (
+        <ImageListItem key={item.image}>
+          <img
+            srcSet={`${item.image}`}
+            src={`${item.image}`}
+            alt={item.name}
+            loading="lazy"
+          />
+          <div><ImageListItemBar
+                title={item.name}
+                subtitle={<span>Description: {item.description}</span>}
+                position="below"
+              /> <Button
+                className="btn btn-secondary mr-2"
+                onClick={() => this.editItem(item)}
+              >
+                Edit
+              </Button>
+              <Button
+                className="btn btn-danger"
+                onClick={() => this.handleDelete(item)}
+              >
+                Delete
+              </Button></div>
+           
+        </ImageListItem>
+      ))}
+    </ImageList>)
+      :
+    (<>
+    <Grid container spacing={3} style={{display: "flex", flexDirection: "row", justifyItems: "center", alignItems: "center"}}>
+      {
+        newItems.map((item) => {
+          return(
+            <Card sx={{ width: 850 }}>
       <CardMedia
         sx={{ height: 345 }}
         image={item.image}
@@ -186,14 +201,17 @@ class App extends Component {
           </Button>
       </CardActions>
     </Card>
-    </Grid>
-  
-    </>
-    
+
+          )
+        })
+      }
+  </Grid>
+
+
+    </>)
     }
-      </>)
-  })}</Grid></>);
-  };
+    </>)
+  }
 
   render() {
     return (
@@ -206,10 +224,9 @@ class App extends Component {
                 </Button>
               </div>
               {this.renderTabList()}
-              <div style={{padding: "50px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
-                <p>{ `${apiURL}`}</p>
+              <div style={{padding: "50px", display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
                 <div>{this.renderItems()}</div>
-                  {this.renderImageList()}
+                  {/* <div>{this.renderImageList()}</div> */}
                 </div>
             
         </div>
