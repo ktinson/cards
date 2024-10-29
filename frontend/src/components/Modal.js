@@ -69,8 +69,9 @@ export default class CustomModal extends Component {
                   name="large"
                   checked={this.state.activeItem.large}
                   onChange={this.handleChange}
+                  style={{color: "black"}}
                 />
-                Large
+                <p  >Large</p>
               </Label>
             </FormGroup>
           </Form>
