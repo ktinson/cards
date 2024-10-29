@@ -4,6 +4,7 @@ import Carousel from "react-material-ui-carousel";
 import {Button, CardActions, Typography, CardContent, CardMedia, Card, Grid, Paper, ImageList, ImageListItem, ImageListItemBar} from '@mui/material/';
 import apiURL from "./api.js";
 import axios from "axios";
+import ImageModal from "./components/imageModal.js";
 
 class App extends Component {
   constructor(props) {
@@ -12,11 +13,13 @@ class App extends Component {
       viewLarge: true,
       cardList: [],
       modal: false,
+      imageModalOpen: false,
       activeItem: {
         name: "",
         description: "",
         large: false,
       },
+      selectedImage: "",
     };
   }
   
@@ -35,7 +38,12 @@ class App extends Component {
   toggle = () => {
     this.setState({ modal: !this.state.modal });
   };
-
+  toggleImageModal = () => {
+    this.setState({ imageModalOpen: !this.state.imageModalOpen });
+  };
+  handleImageClick = (item) => {
+      this.setState({selectedImage: item.image, imageModalOpen: true})
+  }
   handleSubmit = (item) => {
     this.toggle();
     if (item.id) {
@@ -95,10 +103,10 @@ class App extends Component {
   renderImageList = () => {
     const newList = this.state.cardList
     return(<> 
-        {<ImageList sx={{ width: 700, height: 250 }} variant="masonry" cols={3} gap={8}>
+        {<ImageList sx={{ width: 700, height: 250 }} variant="standard" cols={3} gap={8}>
   {newList.map((item) => (
-    <ImageListItem key={item.image} onClick={() => this.editItem(item)}>
-      <img
+    <ImageListItem key={item.image} onClick={() => this.handleImageClick(item)}>
+      <img className="imageListItemimg"
         
         srcSet={`${item.image}`}
         src={`${item.image}`}
@@ -220,7 +228,12 @@ class App extends Component {
             toggle={this.toggle}
             onSave={this.handleSubmit}
           />
-        ) : null}
+        ) : <ImageModal
+              open={this.state.imageModalOpen}
+              onClose={this.toggleImageModal}
+              image={this.state.selectedImage}
+
+        />}
       </main>
     );
   }
