@@ -142,7 +142,8 @@ class App extends Component {
                 subtitle={<span>Description: {item.description}</span>}
                 position="below"
                 
-              /></div><Button
+              /></div>
+              <Button
                 className="btn btn-secondary mr-2"
                 onClick={() => this.editItem(item)}
               >
