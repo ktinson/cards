@@ -14,9 +14,6 @@ public class CardService {
     public List<LargeCard> getAllCards(){
         return cardRepo.findAll();
     }
-    public List<LargeCard> getAllCardIds(){
-        return cardRepo.;
-    }
 
     public Optional<LargeCard> singleCard(ObjectId id){
         return  cardRepo.findById(id);

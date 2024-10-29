@@ -103,11 +103,10 @@ class App extends Component {
   renderImageList = () => {
     const newList = this.state.cardList
     return(<> 
-        {<ImageList sx={{ width: 700, height: 250 }} variant="standard" cols={3} gap={8}>
+        {<ImageList sx={{ width: 900, height: 150 }} variant="standard" cols={6} gap={8} >
   {newList.map((item) => (
     <ImageListItem key={item.image} onClick={() => this.handleImageClick(item)}>
       <img className="imageListItemimg"
-        
         srcSet={`${item.image}`}
         src={`${item.image}`}
         alt={item.name}
@@ -131,7 +130,7 @@ class App extends Component {
     {!viewLarge ?
     (<ImageList variant="masonry" cols={3} gap={8}>
       {newItems.map((item) => (
-        <ImageListItem key={item.image}>
+        <ImageListItem key={item.image} onClick={() => this.handleImageClick(item)}>
           <img
             srcSet={`${item.image}`}
             src={`${item.image}`}
@@ -165,7 +164,7 @@ class App extends Component {
         newItems.map((item) => {
           return(
             <Card sx={{ width: 850 }}>
-      <CardMedia
+      <CardMedia onClick={() => this.handleImageClick(item)}
         sx={{ height: 345 }}
         image={item.image}
         title="card image"

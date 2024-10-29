@@ -5,10 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-image: url("https://static.scientificamerican.com/sciam/cache/file/2C736040-0579-43EC-95E418B9633253AE_source.jpg?w=1350");
+  background-image: url("https://images.unsplash.com/photo-1628498188904-036f5e25e93e?q=80&w=1854&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-repeat:no-repeat;
   background-size: cover;
-  background-blend-mode:darken; */
+  color: white;
+  background-color: rgb(1, 1, 29) ;
+  background-blend-mode:color-dodge;
 
 }
 
@@ -17,10 +19,9 @@ code {
     monospace;
 }
 .imageListItemimg{
- 
-  /* border-color: aliceblue;
+  border-color: aliceblue;
   border-radius: 50%;
-   border-width: 10px; 
-  border-style: solid; */
+   border-width: 3px; 
+  border-style: solid;
 
 }
