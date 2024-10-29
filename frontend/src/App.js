@@ -87,7 +87,7 @@ class App extends Component {
       <div className="nav nav-tabs">
         <span
           onClick={() => this.displayLarge(true)}
-          className={this.state.viewLarge ? "nav-link active" : "nav-link"}
+          className={this.state.viewLarge ? "nav-link active" : "nav-link"} 
         >
           Large Cards
         </span>
@@ -137,11 +137,12 @@ class App extends Component {
             alt={item.name}
             loading="lazy"
           />
-          <div><ImageListItemBar
+          <div><div class="text-white"><ImageListItemBar
                 title={item.name}
                 subtitle={<span>Description: {item.description}</span>}
                 position="below"
-              /> <Button
+                
+              /></div><Button
                 className="btn btn-secondary mr-2"
                 onClick={() => this.editItem(item)}
               >
@@ -207,14 +208,15 @@ class App extends Component {
   render() {
     return (
       <main className="container">
-        <h1 className="text-Black text-uppercase text-center my-4">Card app</h1>
+        <h1 className="text-white text-uppercase text-center my-4">Card app</h1>
         <div className="">
               <div className="mb-4">
                 <Button className="btn btn-primary" onClick={this.createItem}>
                   Add Card
                 </Button>
               </div>
-              {this.renderTabList()}
+              <div class="text-white"> {this.renderTabList()}</div>
+             
               <div style={{padding: "50px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "50px"}}>
                 <div>{this.renderItems()}</div>
                   <div>{this.renderImageList()}</div>
