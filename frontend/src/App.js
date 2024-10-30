@@ -230,12 +230,16 @@ class App extends Component {
             toggle={this.toggle}
             onSave={this.handleSubmit}
           />
-        ) : <ImageModal
-              open={this.state.imageModalOpen}
-              onClose={this.toggleImageModal}
-              image={this.state.selectedImage}
+        ) : null}
 
-        />}
+         {this.state.ImageModal ? (
+          <ImageModal
+          open={this.state.imageModalOpen}
+          onClose={this.toggleImageModal}
+          image={this.state.selectedImage}
+
+    />
+        ) : null }
       </main>
     );
   }
