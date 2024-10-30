@@ -7,9 +7,12 @@
       "localhost",
       "http://localhost:8080",
       "http://localhost:3000",
-      "http://localhost:8080/api/v1/cards"
+      "http://localhost:8080/api/v1/cards",
+      "https://cards-backend-1hpn.onrender.com",
+      "https://cards-backend-1hpn.onrender.com/api/v1/cards",
+      "https://cards-gx86.onrender.com"
     ],
-    "proxy": "http://localhost:8080"
+    "proxy": "https://cards-backend-1hpn.onrender.com"
   },
   "type": "module",
   "dependencies": {

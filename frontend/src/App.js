@@ -30,7 +30,7 @@ class App extends Component {
   
   refreshList = async () => {
    await axios
-      .get(`http://localhost:8080/api/v1/cards`)
+      .get(`${apiURL}/api/v1/cards`)
       .then((res) => this.setState({ cardList: res.data }))
       .catch((err) => console.log(err));
   };
