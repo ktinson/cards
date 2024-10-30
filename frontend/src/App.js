@@ -130,8 +130,8 @@ class App extends Component {
     {!viewLarge ?
     (<ImageList variant="masonry" cols={3} gap={8}>
       {newItems.map((item) => (
-        <ImageListItem key={item.image} onClick={() => this.handleImageClick(item)}>
-          <img
+        <ImageListItem key={item.image} >
+          <img onClick={() => this.handleImageClick(item)}
             srcSet={`${item.image}`}
             src={`${item.image}`}
             alt={item.name}
@@ -232,7 +232,7 @@ class App extends Component {
           />
         ) : null}
 
-         {this.state.ImageModal ? (
+         {this.state.imageModalOpen ? (
           <ImageModal
           open={this.state.imageModalOpen}
           onClose={this.toggleImageModal}
