@@ -7,6 +7,7 @@
       "localhost",
       "http://localhost:8080",
       "http://localhost:3000",
+      "http://localhost:3001",
       "http://localhost:8080/api/v1/cards",
       "https://cards-backend-1hpn.onrender.com",
       "https://cards-backend-1hpn.onrender.com/api/v1/cards",
@@ -36,7 +37,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "set PORT=3000 && node --max-old-space-size=10240 && node_modules/.bin/react-scripts start",
+    "start": "set PORT=3001 &&react-scripts start",
     "build": "node --max-old-space-size=4096 && set PORT=3000 && node_modules/.bin/react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

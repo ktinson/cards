@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3001")
 @RequestMapping("api/v1/cards")
 public class CardsController {
     @Autowired
@@ -46,7 +46,7 @@ public class CardsController {
         return  updatedCard != null ? new ResponseEntity<>(updatedCard, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "http://localhost:3001")
     @DeleteMapping("/id/{id}")
     public  ResponseEntity<LargeCard> deleteCardByName(@PathVariable String id){
         boolean deletedCard = cardService.deleteCardById(id);
