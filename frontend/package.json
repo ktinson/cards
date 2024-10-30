@@ -37,9 +37,21 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "node --max-old-space-size=10240 && node_modules/.bin/react-scripts start --port $PORT",
-    "build": "node --max-old-space-size=4096 && set PORT=3001 && node_modules/.bin/react-scripts build",
+    "start": "node --max-old-space-size=10240 && node_modules/.bin/react-scripts start",
+    "build": "node --max-old-space-size=4096 && node_modules/.bin/react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
