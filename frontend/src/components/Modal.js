@@ -48,7 +48,8 @@ export default class CustomModal extends Component {
                 name="description"
                 value={this.state.activeItem.description}
                 onChange={this.handleChange}
-                placeholder="Enter Card description"
+                placeholder="Enter description max length 250 characters"
+                maxlength="250"
               />
             </FormGroup>
             <FormGroup>

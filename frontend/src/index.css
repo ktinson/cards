@@ -20,8 +20,27 @@ code {
 }
 .imageListItemimg{
   border-color: aliceblue;
-  border-radius: 50%;
-   border-width: 3px; 
+  border-radius: 5%;
+   border-width: 1px; 
   border-style: solid;
 
+}
+.imageListItem{
+  border-color: aliceblue;
+  border-radius: 1%;
+   border-width: 1px; 
+  border-style: solid;
+  padding: 10px;
+}
+.cardAppHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content:right;
+  align-content: center;
+}
+.cardLarge{
+  border-color: aliceblue;
+  border-radius: 1%;
+   border-width: 1px; 
+  border-style: solid;
 }

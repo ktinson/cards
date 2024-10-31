@@ -81,7 +81,7 @@ class App extends Component {
     }
       return this.setState({ viewLarge: false });
   };
-
+  
   renderTabList = () => {
     return (
       <div className="nav nav-tabs">
@@ -93,26 +93,30 @@ class App extends Component {
         </span>
         <span
           onClick={() => this.displayLarge(false)}
-          className={this.state.viewLarge ? "nav-link" : "nav-link active"}
+          className={"nav-link"}
         >
           Small Cards
         </span>
+        
       </div>
     );
   };
   renderImageList = () => {
     const newList = this.state.cardList
-    return(<> 
-        {<ImageList sx={{ width: 900, height: 150 }} variant="standard" cols={6} gap={8} >
+    return( <> 
+        {<ImageList sx={{ width: 900, height: 155}} variant="masonry" cols={6} gap={8} >
   {newList.map((item) => (
+    item.image ?
     <ImageListItem key={item.image} onClick={() => this.handleImageClick(item)}>
       <img className="imageListItemimg"
         srcSet={`${item.image}`}
+        sx={{height: 10, width: 10}}
         src={`${item.image}`}
         alt={item.name}
         loading="lazy"
       />   
     </ImageListItem>
+    : null
   ))}
 </ImageList>}
     
@@ -128,9 +132,10 @@ class App extends Component {
     console.log(newItems);
     return(<>
     {!viewLarge ?
-    (<ImageList variant="masonry" cols={3} gap={8}>
+    (<ImageList variant="masonry" cols={3} gap={8} >
       {newItems.map((item) => (
-        <ImageListItem key={item.image} >
+        item.image ?(
+        <ImageListItem key={item.image} className="imageListItem">
           <img onClick={() => this.handleImageClick(item)}
             srcSet={`${item.image}`}
             src={`${item.image}`}
@@ -139,7 +144,7 @@ class App extends Component {
           />
           <div><div class="text-white"><ImageListItemBar
                 title={item.name}
-                subtitle={<span>Description: {item.description}</span>}
+                subtitle={<span style={{width: 75, textWrap: "wrap"}}>Description: {item.description}</span>}
                 position="below"
                 
               /></div>
@@ -156,7 +161,29 @@ class App extends Component {
                 Delete
               </Button></div>
            
-        </ImageListItem>
+        </ImageListItem>)
+        :
+        (<ImageListItem key={item.image} className="imageListItem">
+          <div><div class="text-white"><ImageListItemBar
+                title={item.name}
+                subtitle={<span style={{width: 75, textWrap: "wrap"}}>Description: {item.description}</span>}
+                position="below"
+                
+              /></div>
+              <Button
+                className="btn btn-secondary mr-2"
+                onClick={() => this.editItem(item)}
+              >
+                Edit
+              </Button>
+              <Button
+                className="btn btn-danger"
+                onClick={() => this.handleDelete(item)}
+              >
+                Delete
+              </Button></div>
+           
+        </ImageListItem>)
       ))}
     </ImageList>)
       :
@@ -164,8 +191,8 @@ class App extends Component {
     <Grid container spacing={3} style={{display: "flex", flexDirection: "column", justifyItems: "center", alignItems: "center", rowGap: "10px"}}>
       {
         newItems.map((item) => {
-          return(
-            <Card sx={{ width: 850 }}>
+          return(item.image ?
+            (<Card sx={{ width: 850 }} className="cardLarge">
       <CardMedia onClick={() => this.handleImageClick(item)}
         sx={{ height: 345 }}
         image={item.image}
@@ -176,7 +203,7 @@ class App extends Component {
           <h2>{item.name}</h2>
         </Typography>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          <p>{item.description}</p>
+          <p style={{width: 775, textWrap: "wrap"}}>{item.description}</p>
         </Typography>
       </CardContent>
       <CardActions>
@@ -193,7 +220,32 @@ class App extends Component {
             Delete
           </Button>
       </CardActions>
-    </Card>
+    </Card>)
+    :
+    (<Card sx={{ width: 850 }} className="cardLarge">
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          <h2>{item.name}</h2>
+        </Typography>
+        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+          <p style={{width: 775, textWrap: "wrap"}}>{item.description}</p>
+        </Typography>
+      </CardContent>
+      <CardActions>
+      <Button
+            className="btn btn-secondary mr-2"
+            onClick={() => this.editItem(item)}
+          >
+            Edit
+          </Button>
+          <Button
+            className="btn btn-danger"
+            onClick={() => this.handleDelete(item)}
+          >
+            Delete
+          </Button>
+      </CardActions>
+    </Card>)
 
           )
         })
@@ -209,7 +261,9 @@ class App extends Component {
   render() {
     return (
       <main className="container">
-        <h1 className="text-white text-uppercase text-center my-4">Card app</h1>
+        <header className="cardAppHeader">
+        <h1 className="text-white text-uppercase text-center my-4">Entropy</h1>
+        </header>
         <div className="">
               <div className="mb-4">
                 <Button className="btn btn-primary" onClick={this.createItem}>
