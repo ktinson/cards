@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3001")
+@CrossOrigin(origins = {"http://localhost:3001", "https://cards-145m.onrender.com"})
 @RequestMapping("api/v1/cards")
 public class CardsController {
     @Autowired
