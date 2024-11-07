@@ -34,8 +34,13 @@ code {
 }
 .cardAppHeader{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content:right;
+  align-content: center;
+}
+.cardHeaderText{
+  display: flex;
+  flex-direction: column;
   align-content: center;
 }
 .cardLarge{
