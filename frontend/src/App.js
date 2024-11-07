@@ -263,6 +263,8 @@ class App extends Component {
       <main className="container">
         <header className="cardAppHeader">
         <h1 className="text-white text-uppercase text-center my-4">Entropy</h1>
+        <h3 className="text-white text-uppercase text-center my-4">Java Springboot</h3>
+
         </header>
         <div className="">
               <div className="mb-4">
