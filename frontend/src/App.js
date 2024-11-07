@@ -192,7 +192,7 @@ class App extends Component {
       {
         newItems.map((item) => {
           return(item.image ?
-            (<Card sx={{ width: 850 }} className="cardLarge">
+            (<Card sx={{ width: 850 }} className="cardLarge" style={{backgroundColor: "black"}}>
       <CardMedia onClick={() => this.handleImageClick(item)}
         sx={{ height: 345 }}
         image={item.image}
@@ -222,7 +222,7 @@ class App extends Component {
       </CardActions>
     </Card>)
     :
-    (<Card sx={{ width: 850 }} className="cardLarge">
+    (<Card sx={{ width: 850 }} className="cardLarge" style={{backgroundColor: "black"}}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           <h2>{item.name}</h2>
