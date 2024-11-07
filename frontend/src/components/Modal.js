@@ -38,6 +38,7 @@ export default class CustomModal extends Component {
                 value={this.state.activeItem.name}
                 onChange={this.handleChange}
                 placeholder="Enter Card Title"
+                required
               />
             </FormGroup>
             <FormGroup>
