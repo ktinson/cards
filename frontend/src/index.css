@@ -6,8 +6,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url("https://images.unsplash.com/photo-1499749143870-d101b3686e3e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-  background-repeat:no-repeat;
-  background-size: cover;
+  background-repeat:repeat-y;
+  /* background-size: cover; */
   /* color: white; */
   background-color: rgb(1, 1, 29) ;
   background-blend-mode:color-dodge;
@@ -49,5 +49,6 @@ code {
   border-radius: 1%;
    border-width: 1px; 
   border-style: solid;
-  background-color: black;
+  color: aliceblue;
+  
 }

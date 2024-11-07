@@ -192,7 +192,7 @@ class App extends Component {
       {
         newItems.map((item) => {
           return(item.image ?
-            (<Card sx={{ width: 850 }} className="cardLarge" style={{backgroundColor: "black"}}>
+            (<Card sx={{ width: 850 }} className="cardLarge" style={{backgroundColor: "transparent", color: "aliceblue"}}>
       <CardMedia onClick={() => this.handleImageClick(item)}
         sx={{ height: 345 }}
         image={item.image}
@@ -202,7 +202,7 @@ class App extends Component {
         <Typography gutterBottom variant="h5" component="div">
           <h2>{item.name}</h2>
         </Typography>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+        <Typography variant="body2" sx={{ color: 'aliceblue' }}>
           <p style={{width: 775, textWrap: "wrap"}}>{item.description}</p>
         </Typography>
       </CardContent>
@@ -222,12 +222,12 @@ class App extends Component {
       </CardActions>
     </Card>)
     :
-    (<Card sx={{ width: 850 }} className="cardLarge" style={{backgroundColor: "black"}}>
+    (<Card sx={{ width: 850 }} className="cardLarge" style={{backgroundColor: "transparent", color: "aliceblue"}}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           <h2>{item.name}</h2>
         </Typography>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+        <Typography variant="body2" sx={{ color: 'aliceblue' }}>
           <p style={{width: 775, textWrap: "wrap"}}>{item.description}</p>
         </Typography>
       </CardContent>
