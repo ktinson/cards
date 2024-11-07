@@ -43,9 +43,11 @@ code {
   flex-direction: column;
   align-content: center;
 }
+
 .cardLarge{
   border-color: aliceblue;
   border-radius: 1%;
    border-width: 1px; 
   border-style: solid;
+  color: none;
 }
